@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bdnai1xmnu06p"]
+[gd_scene load_steps=2 format=3 uid="uid://bdnai1xmnu06p"]
+
+[ext_resource type="Script" path="res://panels/template/content_panel.gd" id="1_l46ha"]
 
 [node name="Panel" type="Panel"]
 anchors_preset = 15
@@ -6,6 +8,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_l46ha")
 
 [node name="SplitButtonTopLeft" type="Button" parent="."]
 layout_mode = 0
@@ -41,3 +44,35 @@ offset_left = -16.0
 offset_top = -16.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="SplitPreview" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Split1" type="Panel" parent="SplitPreview"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"PreviewPanel"
+
+[node name="Split2" type="Panel" parent="SplitPreview"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"PreviewPanel"
+
+[connection signal="gui_input" from="SplitButtonTopLeft" to="." method="_on_split_button_input"]
+[connection signal="gui_input" from="SplitButtonBottomLeft" to="." method="_on_split_button_input"]
+[connection signal="gui_input" from="SplitButtonTopRight" to="." method="_on_split_button_input"]
+[connection signal="gui_input" from="SplitButtonBottomRight" to="." method="_on_split_button_input"]
