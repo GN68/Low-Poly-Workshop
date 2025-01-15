@@ -5,7 +5,7 @@ var is_splitting = false
 var is_split_vertical 
 var split_value: float
 
-const SPLIT_THRESHOLD = 5
+const SPLIT_THRESHOLD = 64
 
 @onready var split1 = $SplitPreview/Split1
 @onready var split2 = $SplitPreview/Split2
