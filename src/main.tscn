@@ -33,7 +33,7 @@ layout_mode = 2
 
 [node name="LayoutButton" type="Button" parent="Ribbon/LayoutTabs/LayoutButtons"]
 layout_mode = 2
-text = "Modeling"
+text = "Unnamed"
 
 [node name="Essential" type="HBoxContainer" parent="Ribbon"]
 layout_mode = 0
@@ -98,4 +98,4 @@ offset_left = -160.0
 offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Low Poly Workshop v0.0.1a"
+text = "Low Poly Workshop v0.0.1a "
