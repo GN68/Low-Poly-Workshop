@@ -12,7 +12,7 @@ const MAX_SPLIT_WIDTH : float = 64
 
 func _ready():
 	sort_children.connect(_sort_children)
-	#slider.flat = true
+	slider.flat = true
 	add_child(slider)
 	
 	slider.anchor_left = 0
@@ -26,7 +26,7 @@ func _ready():
 func _sort_children():
 	if !is_node_ready(): await ready
 	
-	move_child(slider,3)
+	move_child(slider,get_child_count()-1)
 	
 	if get_child_count() != 3: return
 	var a = get_child(0)
