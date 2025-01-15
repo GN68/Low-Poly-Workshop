@@ -21,9 +21,9 @@ func _ready():
 	
 	var half = SLIDER_THICKNESS/2
 	slider.offset_left = -half
-	slider.offset_right = -half
+	slider.offset_right = half
 	slider.offset_top = -half
-	slider.offset_bottom = -half
+	slider.offset_bottom = half
 	
 	slider.gui_input.connect(_on_slider_gui_input)
 
