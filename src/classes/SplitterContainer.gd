@@ -8,6 +8,7 @@ extends Container
 
 const SLIDER_THICKNESS : float = 8.0
 const MAX_SPLIT_WIDTH : float = 64
+@onready var half = SLIDER_THICKNESS/2
 
 func _ready():
 	sort_children.connect(_sort_children)
@@ -18,12 +19,6 @@ func _ready():
 	slider.anchor_right = 1
 	slider.anchor_top = 0
 	slider.anchor_bottom = 1
-	
-	var half = SLIDER_THICKNESS/2
-	slider.offset_left = -half
-	slider.offset_right = half
-	slider.offset_top = -half
-	slider.offset_bottom = half
 	
 	slider.gui_input.connect(_on_slider_gui_input)
 
@@ -46,6 +41,8 @@ func _sort_children():
 		b.anchor_top = split
 		b.anchor_bottom = 1
 		
+		slider.offset_top = -half
+		slider.offset_bottom = half
 		slider.anchor_top = split
 		slider.anchor_bottom = split
 	else:
@@ -59,6 +56,8 @@ func _sort_children():
 		b.anchor_left = split
 		b.anchor_right = 1
 		
+		slider.offset_left = -half
+		slider.offset_right = half
 		slider.anchor_left = split
 		slider.anchor_right = split
 
