@@ -21,6 +21,7 @@ func _ready():
 	slider.anchor_bottom = 1
 	
 	slider.gui_input.connect(_on_slider_gui_input)
+	slider.button_up.connect(_on_slider_release)
 
 func _sort_children():
 	if !is_node_ready(): await ready
@@ -69,10 +70,39 @@ func _on_slider_gui_input(event: InputEvent):
 			if is_vertical: split += shift.x
 			else: split += shift.y
 
+func _on_slider_release():
+	if split == 0: collapse(false)
+	if split == 1: collapse(true)
+
+
 func set_split(new: float):
-	if is_vertical: split = clampf(new,MAX_SPLIT_WIDTH/size.x,1-MAX_SPLIT_WIDTH/size.x)
-	else: split = clampf(new,MAX_SPLIT_WIDTH/size.y,1-MAX_SPLIT_WIDTH/size.y)
+	split = clampf(new,0,1)
 	_sort_children()
+	
+
+func collapse(side: bool):
+	var child
+	if side: child = get_child(1)
+	else: child = get_child(0)
+	
+	var parent = get_parent()
+	var order = self.get_index()
+	parent.remove_child(self)
+	remove_child(child)
+	parent.add_child(child)
+	parent.move_child(child, order)
+	
+	child.anchor_bottom = anchor_bottom
+	child.anchor_top = anchor_top
+	child.anchor_left = anchor_left
+	child.anchor_right = anchor_right
+	
+	child.offset_bottom = offset_bottom
+	child.offset_top = offset_top
+	child.offset_left = offset_left
+	child.offset_right = offset_right
+	
+	queue_free()
 
 
 func set_is_vertical(new: bool):
