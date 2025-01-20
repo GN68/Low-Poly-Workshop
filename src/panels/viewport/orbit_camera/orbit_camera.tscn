@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvvcpqtpwho17"]
+
+[ext_resource type="Script" path="res://panels/viewport/orbit_camera/orbit_camera.gd" id="1_8gieh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eoia3"]
+
+[sub_resource type="Sky" id="Sky_4ksg4"]
+sky_material = SubResource("ProceduralSkyMaterial_eoia3")
+
+[sub_resource type="Environment" id="Environment_jwlwg"]
+background_mode = 2
+sky = SubResource("Sky_4ksg4")
+
+[node name="OrbitCamera" type="Node3D"]
+script = ExtResource("1_8gieh")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+current = true
+fov = 50.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jwlwg")
