@@ -1,16 +1,92 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bl6amu023s1di"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://bl6amu023s1di"]
+
+[ext_resource type="Texture2D" uid="uid://ctxn8t4wuk647" path="res://assets/themes/default/icons/add.svg" id="1_l7nd5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_53l4f"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 1, 1, 0.313726)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.0823529)
 corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5k033"]
+bg_color = Color(0.203125, 0.203125, 0.203125, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.32, 0.32, 0.32, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7oahj"]
+bg_color = Color(0.1875, 0.1875, 0.1875, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.32, 0.32, 0.32, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2ect"]
+bg_color = Color(0.128906, 0.128906, 0.128906, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.253906, 0.253906, 0.253906, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r07o8"]
+atlas = ExtResource("1_l7nd5")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rpy13"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mev3"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 1.0
+bg_color = Color(0.175781, 0.175781, 0.175781, 1)
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnhhb"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 1.0
+bg_color = Color(0.132813, 0.132813, 0.132813, 1)
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4vsv"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 1.0
+bg_color = Color(0.121094, 0.121094, 0.121094, 1)
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jc5m5"]
 bg_color = Color(0.132813, 0.132813, 0.132813, 1)
@@ -37,6 +113,20 @@ corner_radius_bottom_left = 4
 
 [resource]
 Button/styles/focus = SubResource("StyleBoxFlat_53l4f")
+Button/styles/hover = SubResource("StyleBoxFlat_5k033")
+Button/styles/normal = SubResource("StyleBoxFlat_7oahj")
+Button/styles/pressed = SubResource("StyleBoxFlat_e2ect")
+ContentPanelMarginContainer/base_type = &"MarginContainer"
+ContentPanelMarginContainer/constants/margin_bottom = 4
+ContentPanelMarginContainer/constants/margin_left = 4
+ContentPanelMarginContainer/constants/margin_right = 4
+ContentPanelMarginContainer/constants/margin_top = 4
+Icons/icons/add = SubResource("AtlasTexture_r07o8")
+LayoutButtonTab/base_type = &"Button"
+LayoutButtonTab/styles/focus = SubResource("StyleBoxEmpty_rpy13")
+LayoutButtonTab/styles/hover = SubResource("StyleBoxFlat_6mev3")
+LayoutButtonTab/styles/normal = SubResource("StyleBoxFlat_nnhhb")
+LayoutButtonTab/styles/pressed = SubResource("StyleBoxFlat_e4vsv")
 Panel/styles/panel = SubResource("StyleBoxFlat_jc5m5")
 PreviewPanel/base_type = &"Panel"
 PreviewPanel/styles/panel = SubResource("StyleBoxFlat_gb3yy")
