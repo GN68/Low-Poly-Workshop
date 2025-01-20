@@ -82,8 +82,8 @@ func set_split(new: float):
 
 func collapse(side: bool):
 	var child
-	if side: child = get_child(1)
-	else: child = get_child(0)
+	if side: child = get_child(0)
+	else: child = get_child(1)
 	
 	var parent = get_parent()
 	var order = self.get_index()
