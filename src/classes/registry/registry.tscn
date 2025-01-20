@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://qe3w6urdpqap"]
+
+[ext_resource type="Script" path="res://classes/registry/registry.gd" id="1_ikduh"]
+[ext_resource type="Script" path="res://panels/template/content_panel_identity.gd" id="2_1rbmd"]
+[ext_resource type="Resource" uid="uid://dlesrcgnhkdor" path="res://panels/viewport/viewport.tres" id="3_8qvnu"]
+
+[node name="registry" type="Node"]
+script = ExtResource("1_ikduh")
+panels = Array[ExtResource("2_1rbmd")]([ExtResource("3_8qvnu")])
