@@ -1,6 +1,9 @@
 class_name ContentPanel
 extends Panel
 
+@export var current_panel : ContentPanelIdentity : set = set_current_panel
+
+
 var is_splitting = false
 var is_split_vertical 
 var split_value: float
@@ -9,6 +12,7 @@ const SPLIT_THRESHOLD = 64
 
 @onready var split1 = $SplitPreview/Split1
 @onready var split2 = $SplitPreview/Split2
+
 
 func _on_split_button_input(event:InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -31,7 +35,16 @@ func _on_split_button_input(event:InputEvent) -> void:
 					split(split_value, is_split_vertical)
 
 
-func split(split_value: float, is_split_vertical: bool):
+func set_current_panel(new: ContentPanelIdentity):
+	if new is ContentPanelIdentity:
+		current_panel = new
+		if !is_node_ready(): await ready
+		for child in $Content.get_children():
+			child.queue_free()
+		$Content.add_child(new.content_panel.instantiate())
+
+
+func split(split_at: float, is_split_vertical: bool):
 	var splitter = SplitterContainer.new()
 	splitter.is_vertical = is_split_vertical
 	var parent = get_parent()
@@ -39,7 +52,6 @@ func split(split_value: float, is_split_vertical: bool):
 	parent.remove_child(self)
 	parent.add_child(splitter)
 	parent.move_child(splitter, order)
-	
 	
 	splitter.anchor_bottom = anchor_bottom
 	splitter.anchor_top = anchor_top
@@ -53,7 +65,7 @@ func split(split_value: float, is_split_vertical: bool):
 	
 	splitter.add_child(self.duplicate())
 	splitter.add_child(self)
-	splitter.split = split_value
+	splitter.split = split_at
 
 
 func _split_preview():
