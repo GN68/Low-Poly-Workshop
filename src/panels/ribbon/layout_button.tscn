@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmubv2hd50tyw"]
+
+[ext_resource type="Script" path="res://panels/ribbon/layout_button.gd" id="1_d6k5t"]
+[ext_resource type="Texture2D" uid="uid://b6gmkxv4rr2ep" path="res://assets/aliases/icons/rename.tres" id="2_8ykds"]
+[ext_resource type="Texture2D" uid="uid://b45udexk6i2ps" path="res://assets/aliases/icons/tab_delete.tres" id="3_td0ko"]
+[ext_resource type="Texture2D" uid="uid://b7syh2bn1picy" path="res://assets/aliases/icons/tab_move_left.tres" id="4_biqof"]
+[ext_resource type="Texture2D" uid="uid://b41gjsmgoc0w0" path="res://assets/aliases/icons/tab_move_right.tres" id="5_mnbxe"]
+
+[node name="LayoutButton" type="Button"]
+theme_type_variation = &"LayoutButtonTab"
+text = "Unknown"
+script = ExtResource("1_d6k5t")
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+size = Vector2i(131, 120)
+item_count = 4
+item_0/text = "Rename"
+item_0/icon = ExtResource("2_8ykds")
+item_1/text = "Delete"
+item_1/icon = ExtResource("3_td0ko")
+item_1/id = 1
+item_2/text = "Move Left"
+item_2/icon = ExtResource("4_biqof")
+item_2/id = 2
+item_3/text = "Move Right"
+item_3/icon = ExtResource("5_mnbxe")
+item_3/id = 3
+
+[node name="RenameLineEdit" type="LineEdit" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="id_pressed" from="PopupMenu" to="." method="_on_popup_menu_id_pressed"]
+[connection signal="focus_exited" from="RenameLineEdit" to="." method="_on_rename_line_edit_focus_exited"]
+[connection signal="text_submitted" from="RenameLineEdit" to="." method="_on_rename_line_edit_text_submitted"]
