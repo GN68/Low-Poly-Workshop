@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://bl6amu023s1di"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://bl6amu023s1di"]
 
 [ext_resource type="Texture2D" uid="uid://ctxn8t4wuk647" path="res://assets/themes/default/icons/add.svg" id="1_l7nd5"]
 
@@ -50,6 +50,25 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fw13y"]
+bg_color = Color(1, 1, 1, 0.0862745)
+border_color = Color(0.179688, 0.179688, 0.179688, 1)
+corner_radius_top_left = 999
+corner_radius_top_right = 999
+corner_radius_bottom_right = 999
+corner_radius_bottom_left = 999
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbrdi"]
+bg_color = Color(1, 1, 1, 0.145098)
+corner_radius_top_left = 999
+corner_radius_top_right = 999
+corner_radius_bottom_right = 999
+corner_radius_bottom_left = 999
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iqn8x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7cu7w"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_r07o8"]
 atlas = ExtResource("1_l7nd5")
 
@@ -88,6 +107,55 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_detail = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jafxu"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.0976563, 0.0976563, 0.0976563, 1)
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.53125, 0.53125, 0.53125, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkf5m"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.0976563, 0.0976563, 0.0976563, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.285156, 0.285156, 0.285156, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0oauo"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.140625, 0.140625, 0.140625, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.203125, 0.203125, 0.203125, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jc5m5"]
 bg_color = Color(0.132813, 0.132813, 0.132813, 1)
 border_width_left = 1
@@ -121,12 +189,21 @@ ContentPanelMarginContainer/constants/margin_bottom = 4
 ContentPanelMarginContainer/constants/margin_left = 4
 ContentPanelMarginContainer/constants/margin_right = 4
 ContentPanelMarginContainer/constants/margin_top = 4
+IconButton/base_type = &"Button"
+IconButton/styles/focus = SubResource("StyleBoxFlat_fw13y")
+IconButton/styles/hover = SubResource("StyleBoxFlat_xbrdi")
+IconButton/styles/normal = SubResource("StyleBoxEmpty_iqn8x")
+IconButton/styles/pressed = SubResource("StyleBoxEmpty_7cu7w")
 Icons/icons/add = SubResource("AtlasTexture_r07o8")
 LayoutButtonTab/base_type = &"Button"
 LayoutButtonTab/styles/focus = SubResource("StyleBoxEmpty_rpy13")
 LayoutButtonTab/styles/hover = SubResource("StyleBoxFlat_6mev3")
 LayoutButtonTab/styles/normal = SubResource("StyleBoxFlat_nnhhb")
 LayoutButtonTab/styles/pressed = SubResource("StyleBoxFlat_e4vsv")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_jafxu")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_dkf5m")
+LineEdit/styles/read_only = SubResource("StyleBoxFlat_0oauo")
 Panel/styles/panel = SubResource("StyleBoxFlat_jc5m5")
 PreviewPanel/base_type = &"Panel"
 PreviewPanel/styles/panel = SubResource("StyleBoxFlat_gb3yy")
+ProjectButtonTab/base_type = &"Button"
