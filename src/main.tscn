@@ -1,13 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://8dvk26olovqd"]
+[gd_scene load_steps=7 format=3 uid="uid://8dvk26olovqd"]
 
+[ext_resource type="Script" path="res://panels/ribbon/layout_tabs.gd" id="1_w5467"]
 [ext_resource type="Texture2D" uid="uid://ctxn8t4wuk647" path="res://assets/themes/default/icons/add.svg" id="1_y1wcf"]
 [ext_resource type="PackedScene" uid="uid://bdnai1xmnu06p" path="res://panels/template/content_panel.tscn" id="2_xk8nq"]
-
-[sub_resource type="Environment" id="Environment_lk8gn"]
-background_mode = 1
-background_color = Color(0.078125, 0.078125, 0.078125, 1)
-ambient_light_source = 2
-ambient_light_color = Color(0.429592, 0.442644, 0.492188, 1)
+[ext_resource type="PackedScene" uid="uid://dmubv2hd50tyw" path="res://panels/ribbon/layout_button.tscn" id="3_4vbll"]
+[ext_resource type="Environment" uid="uid://crisgidsf6yws" path="res://assets/themes/default/environment.tres" id="5_owy2e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4usw0"]
 
@@ -19,53 +16,76 @@ ambient_light_color = Color(0.429592, 0.442644, 0.492188, 1)
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 32.0
+offset_bottom = 64.0
 grow_horizontal = 2
 
-[node name="LayoutTabs" type="HBoxContainer" parent="UI/Ribbon"]
+[node name="TopRibbon" type="HBoxContainer" parent="UI/Ribbon"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 128.0
 offset_bottom = 32.0
 grow_horizontal = 2
-alignment = 2
+theme_override_constants/separation = 32
 
-[node name="NewLayoutButton" type="Button" parent="UI/Ribbon/LayoutTabs"]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-icon = ExtResource("1_y1wcf")
-flat = true
-expand_icon = true
-
-[node name="LayoutButtons" type="HBoxContainer" parent="UI/Ribbon/LayoutTabs"]
+[node name="Essential" type="HBoxContainer" parent="UI/Ribbon/TopRibbon"]
 layout_mode = 2
 
-[node name="LayoutButton" type="Button" parent="UI/Ribbon/LayoutTabs/LayoutButtons"]
-z_index = 1
-layout_mode = 2
-theme_type_variation = &"LayoutButtonTab"
-text = "Unnamed"
-
-[node name="Essential" type="HBoxContainer" parent="UI/Ribbon"]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 32.0
-
-[node name="FileButton" type="Button" parent="UI/Ribbon/Essential"]
+[node name="FileButton" type="Button" parent="UI/Ribbon/TopRibbon/Essential"]
 layout_mode = 2
 text = "File"
 flat = true
 
-[node name="EditButton" type="Button" parent="UI/Ribbon/Essential"]
+[node name="EditButton" type="Button" parent="UI/Ribbon/TopRibbon/Essential"]
 layout_mode = 2
 text = "Edit"
 flat = true
 
-[node name="HelpButton" type="Button" parent="UI/Ribbon/Essential"]
+[node name="HelpButton" type="Button" parent="UI/Ribbon/TopRibbon/Essential"]
 layout_mode = 2
 text = "Help"
 flat = true
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="UI/Ribbon/TopRibbon"]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical_scroll_mode = 0
+
+[node name="ProjectTabs" type="HBoxContainer" parent="UI/Ribbon/TopRibbon/ScrollContainer2"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Button" type="Button" parent="UI/Ribbon/TopRibbon/ScrollContainer2/ProjectTabs"]
+layout_mode = 2
+theme_type_variation = &"LayoutButtonTab"
+text = "Example Project"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Ribbon/TopRibbon"]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical_scroll_mode = 0
+
+[node name="LayoutTabs" type="HBoxContainer" parent="UI/Ribbon/TopRibbon/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 3
+alignment = 2
+script = ExtResource("1_w5467")
+
+[node name="NewLayoutButton" type="Button" parent="UI/Ribbon/TopRibbon/ScrollContainer/LayoutTabs"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("1_y1wcf")
+expand_icon = true
+
+[node name="LayoutButtons" type="HBoxContainer" parent="UI/Ribbon/TopRibbon/ScrollContainer/LayoutTabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="LayoutButton" parent="UI/Ribbon/TopRibbon/ScrollContainer/LayoutTabs/LayoutButtons" instance=ExtResource("3_4vbll")]
+layout_mode = 2
 
 [node name="Layout" type="Control" parent="UI"]
 layout_mode = 3
@@ -113,10 +133,12 @@ grow_vertical = 0
 text = "Low Poly Workshop v0.0.1a "
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_lk8gn")
+environment = ExtResource("5_owy2e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_4usw0")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.293523, -0.828121, 0.477557, -1.49012e-08, 0.499562, 0.866278, -0.955952, -0.254273, 0.146633, 0, 2, 0)
+
+[connection signal="pressed" from="UI/Ribbon/TopRibbon/ScrollContainer/LayoutTabs/NewLayoutButton" to="UI/Ribbon/TopRibbon/ScrollContainer/LayoutTabs" method="_on_new_layout_button_pressed"]
