@@ -49,6 +49,7 @@ func split(split_at: float, is_split_vertical: bool):
 	splitter.is_vertical = is_split_vertical
 	var parent = get_parent()
 	var order = self.get_index()
+	var clone = self.duplicate()
 	parent.remove_child(self)
 	parent.add_child(splitter)
 	parent.move_child(splitter, order)
@@ -58,12 +59,12 @@ func split(split_at: float, is_split_vertical: bool):
 	splitter.anchor_left = anchor_left
 	splitter.anchor_right = anchor_right
 	
-	splitter.offset_bottom = offset_bottom
-	splitter.offset_top = offset_top
-	splitter.offset_left = offset_left
-	splitter.offset_right = offset_right
+	splitter.offset_bottom = 0
+	splitter.offset_top = 0
+	splitter.offset_left = 0
+	splitter.offset_right = 0
 	
-	splitter.add_child(self.duplicate())
+	splitter.add_child(clone)
 	splitter.add_child(self)
 	splitter.split = split_at
 
