@@ -7,6 +7,7 @@ extends Container
 @onready var slider = Button.new()
 
 const SLIDER_THICKNESS : float = 8.0
+const MARGIN : float = 2.0
 const MAX_SPLIT_WIDTH : float = 64
 @onready var half = SLIDER_THICKNESS/2
 
@@ -42,6 +43,16 @@ func _sort_children():
 		b.anchor_top = split
 		b.anchor_bottom = 1
 		
+		b.offset_left = 0
+		b.offset_right = 0
+		b.offset_bottom = 0
+		b.offset_top = MARGIN
+		
+		a.offset_left = 0
+		a.offset_right = 0
+		a.offset_bottom = -MARGIN
+		a.offset_top = 0
+		
 		slider.offset_top = -half
 		slider.offset_bottom = half
 		slider.anchor_top = split
@@ -56,6 +67,16 @@ func _sort_children():
 		b.anchor_bottom = 1
 		b.anchor_left = split
 		b.anchor_right = 1
+		
+		b.offset_left = MARGIN
+		b.offset_right = 0
+		b.offset_bottom = 0
+		b.offset_top = 0
+		
+		a.offset_left = 0
+		a.offset_right = -MARGIN
+		a.offset_bottom = 0
+		a.offset_top = 0
 		
 		slider.offset_left = -half
 		slider.offset_right = half
