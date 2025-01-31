@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://8dvk26olovqd"]
+[gd_scene load_steps=8 format=3 uid="uid://8dvk26olovqd"]
 
 [ext_resource type="Script" path="res://panels/ribbon/layout_tabs.gd" id="1_w5467"]
 [ext_resource type="Texture2D" uid="uid://ctxn8t4wuk647" path="res://assets/themes/default/icons/add.svg" id="1_y1wcf"]
 [ext_resource type="PackedScene" uid="uid://bdnai1xmnu06p" path="res://panels/template/content_panel.tscn" id="2_xk8nq"]
 [ext_resource type="PackedScene" uid="uid://dmubv2hd50tyw" path="res://panels/ribbon/layout_button.tscn" id="3_4vbll"]
+[ext_resource type="Resource" uid="uid://dlesrcgnhkdor" path="res://panels/viewport/viewport.tres" id="5_2dg1l"]
 [ext_resource type="Environment" uid="uid://crisgidsf6yws" path="res://assets/themes/default/environment.tres" id="5_owy2e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4usw0"]
@@ -99,6 +100,7 @@ grow_vertical = 2
 
 [node name="Panel" parent="UI/Layout" instance=ExtResource("2_xk8nq")]
 layout_mode = 1
+current_panel = ExtResource("5_2dg1l")
 
 [node name="Statusbar" type="Control" parent="UI"]
 layout_mode = 3

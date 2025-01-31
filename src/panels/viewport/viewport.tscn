@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cp53v0doio7jc"]
+[gd_scene load_steps=5 format=3 uid="uid://cp53v0doio7jc"]
 
-[ext_resource type="PackedScene" uid="uid://cvvcpqtpwho17" path="res://panels/viewport/orbit_camera/orbit_camera.tscn" id="1_k8b8k"]
+[ext_resource type="Script" path="res://panels/viewport/orbit_camera/orbit_camera.gd" id="2_6h1yw"]
+[ext_resource type="Script" path="res://classes/meshes/mesh_grid.gd" id="2_ssdwa"]
+[ext_resource type="Script" path="res://classes/feedback_camera_3d.gd" id="3_wknmg"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_omlws"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -15,13 +19,33 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 5.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(1152, 648)
+msaa_3d = 3
+size = Vector2i(1157, 651)
+size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="OrbitCamera" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_k8b8k")]
+[node name="OrbitCamera" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.965926, 0.0669873, -0.25, -7.45058e-09, 0.965926, 0.258819, 0.258819, -0.25, 0.933013, 0, 0, 0)
+script = ExtResource("2_6h1yw")
+
+[node name="FeedbackCamera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/OrbitCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+current = true
+fov = 60.0
+script = ExtResource("3_wknmg")
+
+[node name="Grid" type="Node3D" parent="SubViewportContainer/SubViewport"]
+script = ExtResource("2_ssdwa")
+radius = 16.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
+mesh = SubResource("CylinderMesh_omlws")
+skeleton = NodePath("../../..")
