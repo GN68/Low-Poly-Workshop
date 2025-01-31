@@ -1,8 +1,15 @@
 extends Node3D
 
 @export var zoom : float = 5.0 : set = set_zoom
+var final_zoom : float :
+	set(new): 
+		final_zoom = new
+		$FeedbackCamera3D.position.z = final_zoom
 
 const SENSITIVITY = 0.007
+
+func _ready() -> void:
+	final_zoom = zoom
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -16,4 +23,4 @@ func _input(event: InputEvent) -> void:
 
 func set_zoom(new: float):
 	zoom = clampf(new, 0.1, 10000)
-	$Camera3D.position.z = zoom
+	get_tree().create_tween().set_trans(Tween.TRANS_LINEAR).tween_property(self, "final_zoom", zoom, 0.1)
