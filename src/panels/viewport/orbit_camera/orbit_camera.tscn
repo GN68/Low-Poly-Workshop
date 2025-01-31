@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cvvcpqtpwho17"]
 
 [ext_resource type="Script" path="res://panels/viewport/orbit_camera/orbit_camera.gd" id="1_8gieh"]
-[ext_resource type="Script" path="res://classes/feedback_camera_3d.gd" id="2_2uo30"]
+[ext_resource type="Script" path="res://classes/camera/feedback_camera_3d.gd" id="2_2uo30"]
 
 [node name="OrbitCamera" type="Node3D"]
 script = ExtResource("1_8gieh")
