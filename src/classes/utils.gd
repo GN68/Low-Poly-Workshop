@@ -1,3 +1,4 @@
+@tool
 extends Node
 
 ## Compares the two different version strings.[br]
@@ -14,3 +15,9 @@ func compareVersions(a: String, b: String):
 		if diff != 0:
 			return diff
 	return 0
+
+func rangef(from: float, to: float, step: float) -> Array[float]:
+	var arr : Array[float] = []
+	for i in range((from/step), (to/step)):
+		arr.append(float(i)*step)
+	return arr
