@@ -1,10 +1,10 @@
 extends Node
 
 
-@export var layouts : LayoutCollection : set = set_layout_collection
+@export var layouts: LayoutCollection = LayoutCollection.new() : set = set_layout_collection
 
 
-const PATH_LAYOUTS = "user://layouts.res"
+const PATH_LAYOUTS = "user://layouts.tres"
 
 
 
@@ -23,7 +23,7 @@ func set_layout_collection(new_layouts : LayoutCollection) -> void:
 
 ## Loads file state of the layout collection
 func load_layout_collection() -> LayoutCollection:
-	return load(PATH_LAYOUTS)
+	return ResourceLoader.load(PATH_LAYOUTS, "LayoutCollection")
 
 
 ## Save the current state of the layout collection

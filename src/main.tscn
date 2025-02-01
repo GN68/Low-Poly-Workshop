@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://8dvk26olovqd"]
+[gd_scene load_steps=9 format=3 uid="uid://8dvk26olovqd"]
 
 [ext_resource type="Script" path="res://panels/ribbon/layout_tabs.gd" id="1_w5467"]
 [ext_resource type="Texture2D" uid="uid://ctxn8t4wuk647" path="res://assets/themes/default/icons/add.svg" id="1_y1wcf"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dmubv2hd50tyw" path="res://panels/ribbon/layout_button.tscn" id="3_4vbll"]
 [ext_resource type="Resource" uid="uid://dlesrcgnhkdor" path="res://panels/viewport/viewport.tres" id="5_2dg1l"]
 [ext_resource type="Environment" uid="uid://crisgidsf6yws" path="res://assets/themes/default/environment.tres" id="5_owy2e"]
+[ext_resource type="Script" path="res://classes/gizmos/arrow.gd" id="7_fv3qd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4usw0"]
 
@@ -142,5 +143,10 @@ mesh = SubResource("BoxMesh_4usw0")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.293523, -0.828121, 0.477557, -1.49012e-08, 0.499562, 0.866278, -0.955952, -0.254273, 0.146633, 0, 2, 0)
+
+[node name="ArrowGizmo" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0, 0)
+script = ExtResource("7_fv3qd")
+color = Color(0.539348, 1, 0.288419, 1)
 
 [connection signal="pressed" from="UI/Ribbon/TopRibbon/ScrollContainer/LayoutTabs/NewLayoutButton" to="UI/Ribbon/TopRibbon/ScrollContainer/LayoutTabs" method="_on_new_layout_button_pressed"]

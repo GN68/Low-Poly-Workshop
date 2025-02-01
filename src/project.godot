@@ -19,8 +19,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Utils="*res://classes/utils.gd"
-LPWEditor="*res://classes/editor.gd"
 Registry="*res://classes/registry/registry.tscn"
+LPWEditor="*res://classes/editor.gd"
 
 [debug]
 
