@@ -77,32 +77,29 @@ func update_grid():
 func _get_floor(x: float) -> float:
 	return floor(x)
 
+func _place_stripe(st: SurfaceTool,from: Vector3, to: Vector3, color: Color,s: float):
+	var mid = lerp(from,to,0.5)
+	st.set_color(Color(color,0))
+	st.add_vertex(from)
+	st.set_color(Color(color,s))
+	st.add_vertex(mid)
+	st.add_vertex(mid)
+	st.set_color(Color(color,0))
+	st.add_vertex(to)
+
 func _place_stripes(st: SurfaceTool, step: float, color: Color = Color(0.5,0.5,0.5)):
 	for x in Utils.rangef(-radius,radius,step):
 		var s = sqrt(1-clamp(x/(radius),-1,1)**2.0)
 		var is_major = (fmod(abs(x),major) == 0)
 		if !is_major:
 			pass
-		st.set_color(Color.BLACK)
-		st.add_vertex(Vector3(x,0,-radius*s))
-		st.set_color(Color(s,s,s) * color)
-		st.add_vertex(Vector3(x,0,0))
-		st.add_vertex(Vector3(x,0,0))
-		st.set_color(Color.BLACK)
-		st.add_vertex(Vector3(x,0,radius*s))
+	for x in Utils.rangef(-radius,radius,step):
+		var s = sqrt(1-clamp(x/(radius),-1,1)**2.0)
+		_place_stripe(st,Vector3(x,0,-radius * s),Vector3(x,0,radius*s),color,s)
 	
 	for z in Utils.rangef(-radius,radius,step):
 		var s = sqrt(1-clamp(z/(radius),-1,1)**2.0)
-		var is_major = (fmod(abs(z),major) == 0)
-		if !is_major:
-			pass
-		st.set_color(Color.BLACK)
-		st.add_vertex(Vector3(-radius*s,0,z))
-		st.set_color(Color(s,s,s) * color)
-		st.add_vertex(Vector3(0,0,z))
-		st.add_vertex(Vector3(0,0,z))
-		st.set_color(Color.BLACK)
-		st.add_vertex(Vector3(radius*s,0,z))
+		_place_stripe(st,Vector3(-radius*s,0,z),Vector3(radius*s,0,z),color,s)
 
 func _generate_mesh():
 	var st = SurfaceTool.new()
@@ -112,6 +109,9 @@ func _generate_mesh():
 	
 	_place_stripes(st, minor,Color(0.05,0.05,0.05))
 	_place_stripes(st, major,Color(0.1,0.1,0.1))
+	
+	_place_stripe(st, Vector3(radius,0,0),Vector3(-radius,0,0),Color.RED,1)
+	_place_stripe(st, Vector3(0,0,radius),Vector3(0,0,-radius),Color.BLUE,1)
 	
 	var mesh = st.commit()	
 	
