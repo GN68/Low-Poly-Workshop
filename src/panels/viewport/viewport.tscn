@@ -3,8 +3,7 @@
 [ext_resource type="Script" path="res://panels/viewport/orbit_camera/orbit_camera.gd" id="2_6h1yw"]
 [ext_resource type="Script" path="res://classes/meshes/mesh_grid.gd" id="2_ssdwa"]
 [ext_resource type="Script" path="res://classes/camera/feedback_camera_3d.gd" id="3_wknmg"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_omlws"]
+[ext_resource type="Environment" uid="uid://crisgidsf6yws" path="res://assets/themes/default/environment.tres" id="4_vwkt3"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -26,6 +25,7 @@ grow_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+own_world_3d = true
 handle_input_locally = false
 msaa_3d = 3
 size = Vector2i(1157, 651)
@@ -44,8 +44,8 @@ script = ExtResource("3_wknmg")
 
 [node name="Grid" type="Node3D" parent="SubViewportContainer/SubViewport"]
 script = ExtResource("2_ssdwa")
-radius = 16.0
+radius = 8.0
+major = 1
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
-mesh = SubResource("CylinderMesh_omlws")
-skeleton = NodePath("../../..")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = ExtResource("4_vwkt3")
