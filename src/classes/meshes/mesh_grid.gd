@@ -14,20 +14,15 @@ var plane : Plane
 @export_group("Material")
 var material_base : Material
 
-var material_major : ShaderMaterial
-var material_minor : ShaderMaterial
+var material : ShaderMaterial
 
 
 func _ready() -> void:
-	material_base = ShaderMaterial.new()
-	material_base.shader = load("res://shaders/grid.gdshader")
+	material = ShaderMaterial.new()
+	material.shader = load("res://shaders/grid.gdshader")
 	_generate_mesh()
 	
-	material_major = material_base.duplicate()
-	material_minor = material_base.duplicate()
-	
-	base_mesh.mesh.surface_set_material(0, material_major)
-	base_mesh.mesh.surface_set_material(1, material_minor)
+	base_mesh.mesh.surface_set_material(0, material)
 	
 	set_notify_transform(true)
 	add_child(base_mesh)
@@ -54,88 +49,70 @@ func update_plane():
 
 
 func update_grid():
-	if !camera: return
-	
-	var projected_pos = plane.project(camera.global_position)
-	
-	# Scale the grid to seamlesly match minor grid to major grid
-	var dist = projected_pos.distance_to(camera.global_position) * 2
-	var s = 1
-	for i in range(10):
-		if dist > major:
-			s *= major
-			dist /= major
-	base_mesh.scale = Vector3(s,s,s)
-	material_major.set_shader_parameter("alpha",remap(dist,major,0, 0,0.1))
-	material_minor.set_shader_parameter("alpha", 0.1)
-	
-	
-	# Move the grid to the camera
-	projected_pos = to_local(projected_pos)
-	projected_pos.x = snappedf(projected_pos.x, major*minor*s)
-	projected_pos.z = snappedf(projected_pos.z, major*minor*s)
-	base_mesh.position = Vector3(projected_pos.x,0,projected_pos.z)
+	pass
+	# TODO: convert to GPU
+	# if !camera: return
+	# 
+	# var projected_pos = plane.project(camera.global_position)
+	# 
+	# # Scale the grid to seamlesly match minor grid to major grid
+	# var dist = projected_pos.distance_to(camera.global_position) * 2
+	# var s = 1
+	# for i in range(10):
+	# 	if dist > major:
+	# 		s *= major
+	# 		dist /= major
+	# base_mesh.scale = Vector3(s,s,s)
+	# material.set_shader_parameter("alpha",remap(dist,major,0, 0,0.1))
+	# material_minor.set_shader_parameter("alpha", 0.1)
+	# 
+	# 
+	# # Move the grid to the camera
+	# projected_pos = to_local(projected_pos)
+	# projected_pos.x = snappedf(projected_pos.x, major*minor*s)
+	# projected_pos.z = snappedf(projected_pos.z, major*minor*s)
+	# base_mesh.position = Vector3(projected_pos.x,0,projected_pos.z)
 	
 
 func _get_floor(x: float) -> float:
 	return floor(x)
 
+func _place_stripes(st: SurfaceTool, step: float, color: Color = Color(0.5,0.5,0.5)):
+	for x in Utils.rangef(-radius,radius,step):
+		var s = sqrt(1-clamp(x/(radius),-1,1)**2.0)
+		var is_major = (fmod(abs(x),major) == 0)
+		if !is_major:
+			pass
+		st.set_color(Color.BLACK)
+		st.add_vertex(Vector3(x,0,-radius*s))
+		st.set_color(Color(s,s,s) * color)
+		st.add_vertex(Vector3(x,0,0))
+		st.add_vertex(Vector3(x,0,0))
+		st.set_color(Color.BLACK)
+		st.add_vertex(Vector3(x,0,radius*s))
+	
+	for z in Utils.rangef(-radius,radius,step):
+		var s = sqrt(1-clamp(z/(radius),-1,1)**2.0)
+		var is_major = (fmod(abs(z),major) == 0)
+		if !is_major:
+			pass
+		st.set_color(Color.BLACK)
+		st.add_vertex(Vector3(-radius*s,0,z))
+		st.set_color(Color(s,s,s) * color)
+		st.add_vertex(Vector3(0,0,z))
+		st.add_vertex(Vector3(0,0,z))
+		st.set_color(Color.BLACK)
+		st.add_vertex(Vector3(radius*s,0,z))
 
 func _generate_mesh():
 	var st = SurfaceTool.new()
 	# Minor grid lines
 	st.begin(Mesh.PRIMITIVE_LINES)
+	st.set_normal(Vector3.UP)
 	
-	for x in Utils.rangef(-radius,radius,minor):
-		var s = max(sqrt(1-(x/(radius*minor))**2.0),0)
-		var is_major = (fmod(abs(x),major) == 0)
-		st.set_normal(Vector3.UP)
-		if !is_major:
-			st.set_color(Color.BLACK)
-			st.add_vertex(Vector3(x,0,-minor*radius*s))
-			st.set_color(Color(s,s,s))
-			st.add_vertex(Vector3(x,0,0))
-			st.add_vertex(Vector3(x,0,0))
-			st.set_color(Color.BLACK)
-			st.add_vertex(Vector3(x,0,minor*radius*s))
+	_place_stripes(st, minor,Color(0.05,0.05,0.05))
+	_place_stripes(st, major,Color(0.1,0.1,0.1))
 	
-	for z in Utils.rangef(-radius,radius,minor):
-		var s = max(sqrt(1-(z/(radius*minor))**2.0),0)
-		var is_major = (fmod(abs(z),major) == 0)
-		if !is_major:
-			st.set_color(Color.BLACK)
-			st.add_vertex(Vector3(-minor*radius*s,0,z))
-			st.set_color(Color(s,s,s))
-			st.add_vertex(Vector3(0,0,z))
-			st.add_vertex(Vector3(0,0,z))
-			st.set_color(Color.BLACK)
-			st.add_vertex(Vector3(minor*radius*s,0,z))
-	
-	var mesh = st.commit()
-	st.begin(Mesh.PRIMITIVE_LINES)
-	
-	#Major grid lines
-	var step = major*minor
-	for x in Utils.rangef(-radius,radius,minor):
-		var s = max(sqrt(clamp(1-(x/(radius*minor))**2.0,0,1)),0)
-		st.set_color(Color.BLACK)
-		st.add_vertex(Vector3(x*major,0,-step*radius*s))
-		st.set_color(Color(s,s,s))
-		st.add_vertex(Vector3(x*major,0,0))
-		st.add_vertex(Vector3(x*major,0,0))
-		st.set_color(Color.BLACK)
-		st.add_vertex(Vector3(x*major,0,step*radius*s))
-	
-	for z in Utils.rangef(-radius,radius,minor):
-		var s = max(sqrt(clamp(1-(z/(radius*minor))**2.0,0,1)),0)
-		st.set_color(Color.BLACK)
-		st.add_vertex(Vector3(-step*radius*s,0,z*major))
-		st.set_color(Color(s,s,s))
-		st.add_vertex(Vector3(0,0,z*major))
-		st.add_vertex(Vector3(0,0,z*major))
-		st.set_color(Color.BLACK)
-		st.add_vertex(Vector3(step*radius*s,0,z*major))
-	
-	mesh = st.commit(mesh)
+	var mesh = st.commit()	
 	
 	base_mesh.mesh = mesh
