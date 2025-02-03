@@ -3,7 +3,7 @@ extends Button
 @export var layout : Layout : set = set_layout
 
 @onready var popup_menu: PopupMenu = $PopupMenu
-
+@onready var LayoutUIManager = Registry.LayoutUIManager
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and !event.pressed:
@@ -52,13 +52,13 @@ func _on_popup_menu_id_pressed(id: int) -> void:
 		0:
 			rename()
 		1:
-			LPWEditor.layouts.delete_layout(layout)
+			LayoutUIManager.layouts.delete_layout(layout)
 		2:
 			if get_index() > 0:
-				LPWEditor.layouts.swap_layouts(get_index(),get_index()-1)
+				LayoutUIManager.layouts.swap_layouts(get_index(),get_index()-1)
 		3:
-			if get_index() < LPWEditor.layouts.collection.size()-1:
-				LPWEditor.layouts.swap_layouts(get_index(),get_index()+1)
+			if get_index() < LayoutUIManager.layouts.collection.size()-1:
+				LayoutUIManager.layouts.swap_layouts(get_index(),get_index()+1)
 
 func _on_rename_line_edit_focus_exited() -> void:
 	$RenameLineEdit.visible = false

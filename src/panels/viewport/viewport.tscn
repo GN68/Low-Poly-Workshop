@@ -18,8 +18,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 5.0
-offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
@@ -28,7 +26,7 @@ stretch = true
 own_world_3d = true
 handle_input_locally = false
 msaa_3d = 3
-size = Vector2i(1157, 651)
+size = Vector2i(1152, 648)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 

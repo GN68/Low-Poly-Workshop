@@ -1,6 +1,12 @@
 class_name ContentPanel
 extends Panel
 
+
+const SPLIT_THRESHOLD = 64
+
+
+@onready var split1 = $SplitPreview/Split1
+@onready var split2 = $SplitPreview/Split2
 @export var current_panel : ContentPanelIdentity : set = set_current_panel
 
 
@@ -8,10 +14,9 @@ var is_splitting = false
 var is_split_vertical 
 var split_value: float
 
-const SPLIT_THRESHOLD = 64
 
-@onready var split1 = $SplitPreview/Split1
-@onready var split2 = $SplitPreview/Split2
+signal current_panel_changed(panel: ContentPanelIdentity)
+signal layout_changed
 
 
 func _on_split_button_input(event:InputEvent) -> void:
@@ -42,6 +47,8 @@ func set_current_panel(new: ContentPanelIdentity):
 		for child in $Content.get_children():
 			child.queue_free()
 		$Content.add_child(new.content_panel.instantiate())
+	current_panel_changed.emit(new)
+	layout_changed.emit()
 
 
 func split(split_at: float, is_split_vertical: bool):
@@ -67,6 +74,8 @@ func split(split_at: float, is_split_vertical: bool):
 	splitter.add_child(clone)
 	splitter.add_child(self)
 	splitter.split = split_at
+	layout_changed.emit()
+	splitter.layout_changed.connect(Registry.LayoutUIManager._on_layout_change)
 
 
 func _split_preview():

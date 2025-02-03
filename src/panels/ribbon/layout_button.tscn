@@ -8,7 +8,7 @@
 
 [node name="LayoutButton" type="Button"]
 theme_type_variation = &"LayoutButtonTab"
-text = "Unknown"
+text = "..."
 script = ExtResource("1_d6k5t")
 
 [node name="PopupMenu" type="PopupMenu" parent="."]

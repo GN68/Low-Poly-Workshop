@@ -1,6 +1,6 @@
-[gd_resource type="Theme" load_steps=20 format=3 uid="uid://bl6amu023s1di"]
+[gd_resource type="Theme" load_steps=21 format=3 uid="uid://bl6amu023s1di"]
 
-[ext_resource type="Texture2D" uid="uid://ctxn8t4wuk647" path="res://assets/themes/default/icons/add.svg" id="1_l7nd5"]
+[ext_resource type="Texture2D" uid="uid://ctxn8t4wuk647" path="res://assets/themes/default/icons/add.svg" id="1_v2lld"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_53l4f"]
 draw_center = false
@@ -70,7 +70,7 @@ corner_radius_bottom_left = 999
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7cu7w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r07o8"]
-atlas = ExtResource("1_l7nd5")
+atlas = ExtResource("1_v2lld")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rpy13"]
 
@@ -78,7 +78,18 @@ atlas = ExtResource("1_l7nd5")
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 1.0
-bg_color = Color(0.175781, 0.175781, 0.175781, 1)
+bg_color = Color(0.199219, 0.199219, 0.199219, 1)
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ylve"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 1.0
+bg_color = Color(0.152344, 0.152344, 0.152344, 1)
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 0)
 corner_radius_top_left = 8
@@ -196,8 +207,10 @@ IconButton/styles/normal = SubResource("StyleBoxEmpty_iqn8x")
 IconButton/styles/pressed = SubResource("StyleBoxEmpty_7cu7w")
 Icons/icons/add = SubResource("AtlasTexture_r07o8")
 LayoutButtonTab/base_type = &"Button"
+LayoutButtonTab/colors/font_pressed_color = Color(0.574219, 0.574219, 0.574219, 1)
 LayoutButtonTab/styles/focus = SubResource("StyleBoxEmpty_rpy13")
 LayoutButtonTab/styles/hover = SubResource("StyleBoxFlat_6mev3")
+LayoutButtonTab/styles/hover_pressed = SubResource("StyleBoxFlat_0ylve")
 LayoutButtonTab/styles/normal = SubResource("StyleBoxFlat_nnhhb")
 LayoutButtonTab/styles/pressed = SubResource("StyleBoxFlat_e4vsv")
 LineEdit/styles/focus = SubResource("StyleBoxFlat_jafxu")

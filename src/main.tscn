@@ -1,12 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://8dvk26olovqd"]
+[gd_scene load_steps=11 format=3 uid="uid://8dvk26olovqd"]
 
 [ext_resource type="Script" path="res://panels/ribbon/layout_tabs.gd" id="1_w5467"]
 [ext_resource type="Texture2D" uid="uid://ctxn8t4wuk647" path="res://assets/themes/default/icons/add.svg" id="1_y1wcf"]
 [ext_resource type="PackedScene" uid="uid://bdnai1xmnu06p" path="res://panels/template/content_panel.tscn" id="2_xk8nq"]
 [ext_resource type="PackedScene" uid="uid://dmubv2hd50tyw" path="res://panels/ribbon/layout_button.tscn" id="3_4vbll"]
-[ext_resource type="Resource" uid="uid://dlesrcgnhkdor" path="res://panels/viewport/viewport.tres" id="5_2dg1l"]
+[ext_resource type="Script" path="res://classes/singletons/layout_ui_manager.gd" id="4_a1k1k"]
+[ext_resource type="Resource" path="user://layouts.tres" id="5_6f7kt"]
 [ext_resource type="Environment" uid="uid://crisgidsf6yws" path="res://assets/themes/default/environment.tres" id="5_owy2e"]
+[ext_resource type="Script" path="res://classes/ui/layout.gd" id="6_qi2c7"]
 [ext_resource type="Script" path="res://classes/gizmos/arrow.gd" id="7_fv3qd"]
+
+[sub_resource type="Resource" id="Resource_i8jnn"]
+script = ExtResource("6_qi2c7")
+name = "New Layout"
+tree = {}
 
 [node name="Node" type="Node"]
 
@@ -86,8 +93,9 @@ alignment = 2
 
 [node name="LayoutButton" parent="UI/Ribbon/TopRibbon/ScrollContainer/LayoutTabs/LayoutButtons" instance=ExtResource("3_4vbll")]
 layout_mode = 2
+toggle_mode = true
 
-[node name="Layout" type="Control" parent="UI"]
+[node name="LayoutUIManager" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,10 +104,12 @@ offset_top = 32.0
 offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_a1k1k")
+layouts = ExtResource("5_6f7kt")
+current_layout = SubResource("Resource_i8jnn")
 
-[node name="Panel" parent="UI/Layout" instance=ExtResource("2_xk8nq")]
+[node name="Panel2" parent="UI/LayoutUIManager" instance=ExtResource("2_xk8nq")]
 layout_mode = 1
-current_panel = ExtResource("5_2dg1l")
 
 [node name="Statusbar" type="Control" parent="UI"]
 layout_mode = 3
@@ -145,3 +155,4 @@ script = ExtResource("7_fv3qd")
 color = Color(0.539348, 1, 0.288419, 1)
 
 [connection signal="pressed" from="UI/Ribbon/TopRibbon/ScrollContainer/LayoutTabs/NewLayoutButton" to="UI/Ribbon/TopRibbon/ScrollContainer/LayoutTabs" method="_on_new_layout_button_pressed"]
+[connection signal="layout_changed" from="UI/LayoutUIManager/Panel" to="UI/LayoutUIManager" method="_on_layout_change"]

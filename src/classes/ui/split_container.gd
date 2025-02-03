@@ -2,24 +2,25 @@
 class_name SplitterContainer
 extends Container
 
+
 @export var is_vertical : bool = false : set = set_is_vertical
 @export var split : float : set = set_split
 @onready var slider = Button.new()
+@onready var half = SLIDER_THICKNESS/2
+
 
 const SLIDER_THICKNESS : float = 8.0
 const MARGIN : float = 2.0
 const MAX_SPLIT_WIDTH : float = 64
-@onready var half = SLIDER_THICKNESS/2
+
+
+signal layout_changed
+
 
 func _ready():
 	sort_children.connect(_sort_children)
 	slider.flat = true
 	add_child(slider)
-	
-	slider.anchor_left = 0
-	slider.anchor_right = 1
-	slider.anchor_top = 0
-	slider.anchor_bottom = 1
 	
 	slider.gui_input.connect(_on_slider_gui_input)
 	slider.button_up.connect(_on_slider_release)
@@ -28,6 +29,11 @@ func _sort_children():
 	if !is_node_ready(): await ready
 	
 	move_child(slider,get_child_count()-1)
+	
+	slider.anchor_left = 0
+	slider.anchor_right = 1
+	slider.anchor_top = 0
+	slider.anchor_bottom = 1
 	
 	if get_child_count() != 3: return
 	var a = get_child(0)
@@ -94,6 +100,7 @@ func _on_slider_gui_input(event: InputEvent):
 func _on_slider_release():
 	if split == 0: collapse(false)
 	if split == 1: collapse(true)
+	layout_changed.emit()
 
 
 func set_split(new: float):
