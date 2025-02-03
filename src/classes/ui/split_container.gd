@@ -129,7 +129,6 @@ func collapse(side: bool):
 	child.offset_top = offset_top
 	child.offset_left = offset_left
 	child.offset_right = offset_right
-	
 	queue_free()
 
 

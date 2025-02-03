@@ -39,14 +39,17 @@ func set_layout_collection(new_layouts : LayoutCollection) -> void:
 ## Saves the current state of the UI Layout to a layout resource.
 func save_layout() -> void:
 	_collect_layout(get_child(0), current_layout.tree)
+	print(current_layout.tree)
 	save_layout_collection()
 
 
 func _collect_layout(layout, data: Dictionary) :
 	if layout is ContentPanel:
 		if layout.current_panel is ContentPanelIdentity:
+			data.clear()
 			data["type"] = layout.current_panel.name
 	elif layout is SplitterContainer:
+		data.clear()
 		data["is_vertical"] = layout.is_vertical
 		data["split"] = layout.split
 		data["A"] = {}
