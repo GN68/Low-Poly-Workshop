@@ -49,6 +49,7 @@ func set_current_panel(new: ContentPanelIdentity):
 		$Content.add_child(new.content_panel.instantiate())
 	current_panel_changed.emit(new)
 	layout_changed.emit()
+	$ModeOptionButton.set_from_name(new.name)
 
 
 func split(split_at: float, is_split_vertical: bool):

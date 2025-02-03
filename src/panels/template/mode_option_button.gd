@@ -14,3 +14,12 @@ func _item_selected(index: int) -> void:
 		parent.current_panel = Registry.panels[index]
 	else:
 		push_error("Parent is not a ContentPanel")
+
+func set_from_identity(identity: ContentPanelIdentity):
+	for i in range(Registry.panels.size()):
+		if Registry.panels[i] == identity:
+			select(i)
+
+func set_from_name(name: String):
+	if Registry.has_panel(name):
+		select(Registry.panels.find(Registry.get_panel(name)))

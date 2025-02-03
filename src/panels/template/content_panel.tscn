@@ -1,11 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdnai1xmnu06p"]
+[gd_scene load_steps=3 format=3 uid="uid://bdnai1xmnu06p"]
 
 [ext_resource type="Script" path="res://panels/template/content_panel.gd" id="1_l46ha"]
-[ext_resource type="Texture2D" uid="uid://cnwleaswmyw3g" path="res://assets/themes/default/icons/cube.svg" id="2_5ntsc"]
 [ext_resource type="Script" path="res://panels/template/mode_option_button.gd" id="3_v8kn5"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rijqp"]
-atlas = ExtResource("2_5ntsc")
 
 [node name="Panel" type="Panel"]
 anchors_preset = 15
@@ -97,11 +93,15 @@ grow_vertical = 2
 theme_type_variation = &"PreviewPanel"
 
 [node name="ModeOptionButton" type="OptionButton" parent="."]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 4.0
-offset_right = 64.0
-offset_bottom = 36.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -28.0
+offset_right = 40.0
+offset_bottom = -3.0
+grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 0)
 clip_text = true
 expand_icon = true
@@ -109,10 +109,6 @@ selected = 0
 fit_to_longest_item = false
 allow_reselect = true
 item_count = 2
-popup/item_0/text = "tilt"
-popup/item_0/icon = SubResource("AtlasTexture_rijqp")
-popup/item_1/text = "bb"
-popup/item_1/id = 1
 script = ExtResource("3_v8kn5")
 
 [connection signal="gui_input" from="SplitButtonTopLeft" to="." method="_on_split_button_input"]
