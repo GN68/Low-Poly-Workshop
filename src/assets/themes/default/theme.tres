@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=21 format=3 uid="uid://bl6amu023s1di"]
+[gd_resource type="Theme" load_steps=23 format=3 uid="uid://bl6amu023s1di"]
 
 [ext_resource type="Texture2D" uid="uid://ctxn8t4wuk647" path="res://assets/themes/default/icons/add.svg" id="1_v2lld"]
 
@@ -49,6 +49,29 @@ corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esgr1"]
+bg_color = Color(0.296875, 0.296875, 0.296875, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5q2nn"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.136719, 0.136719, 0.136719, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.18, 0.18, 0.18, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fw13y"]
 bg_color = Color(1, 1, 1, 0.0862745)
@@ -200,6 +223,8 @@ ContentPanelMarginContainer/constants/margin_bottom = 4
 ContentPanelMarginContainer/constants/margin_left = 4
 ContentPanelMarginContainer/constants/margin_right = 4
 ContentPanelMarginContainer/constants/margin_top = 4
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_esgr1")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_5q2nn")
 IconButton/base_type = &"Button"
 IconButton/styles/focus = SubResource("StyleBoxFlat_fw13y")
 IconButton/styles/hover = SubResource("StyleBoxFlat_xbrdi")
