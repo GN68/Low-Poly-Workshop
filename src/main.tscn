@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://8dvk26olovqd"]
+[gd_scene load_steps=10 format=3 uid="uid://8dvk26olovqd"]
 
 [ext_resource type="Script" path="res://panels/ribbon/layout_tabs.gd" id="1_w5467"]
 [ext_resource type="Texture2D" uid="uid://ctxn8t4wuk647" path="res://assets/themes/default/icons/add.svg" id="1_y1wcf"]
-[ext_resource type="PackedScene" uid="uid://bdnai1xmnu06p" path="res://panels/template/content_panel.tscn" id="2_xk8nq"]
 [ext_resource type="PackedScene" uid="uid://dmubv2hd50tyw" path="res://panels/ribbon/layout_button.tscn" id="3_4vbll"]
 [ext_resource type="Script" path="res://classes/singletons/layout_ui_manager.gd" id="4_a1k1k"]
 [ext_resource type="Resource" path="user://layouts.tres" id="5_6f7kt"]
@@ -12,8 +11,18 @@
 
 [sub_resource type="Resource" id="Resource_i8jnn"]
 script = ExtResource("6_qi2c7")
-name = "New Layout"
-tree = {}
+name = "Default Layout"
+tree = {
+"A": {},
+"B": {
+"A": {},
+"B": {},
+"is_vertical": false,
+"split": 0.467905
+},
+"is_vertical": true,
+"split": 0.517361
+}
 
 [node name="Node" type="Node"]
 
@@ -38,20 +47,15 @@ theme_override_constants/separation = 32
 [node name="Essential" type="HBoxContainer" parent="UI/Ribbon/TopRibbon"]
 layout_mode = 2
 
-[node name="FileButton" type="Button" parent="UI/Ribbon/TopRibbon/Essential"]
+[node name="FileButton" type="MenuButton" parent="UI/Ribbon/TopRibbon/Essential"]
 layout_mode = 2
 text = "File"
-flat = true
+item_count = 1
 
-[node name="EditButton" type="Button" parent="UI/Ribbon/TopRibbon/Essential"]
-layout_mode = 2
-text = "Edit"
-flat = true
-
-[node name="HelpButton" type="Button" parent="UI/Ribbon/TopRibbon/Essential"]
+[node name="HelpButton" type="MenuButton" parent="UI/Ribbon/TopRibbon/Essential"]
 layout_mode = 2
 text = "Help"
-flat = true
+item_count = 1
 
 [node name="ScrollContainer2" type="ScrollContainer" parent="UI/Ribbon/TopRibbon"]
 layout_mode = 2
@@ -109,9 +113,6 @@ script = ExtResource("4_a1k1k")
 layouts = ExtResource("5_6f7kt")
 current_layout = SubResource("Resource_i8jnn")
 
-[node name="Panel2" parent="UI/LayoutUIManager" instance=ExtResource("2_xk8nq")]
-layout_mode = 1
-
 [node name="Statusbar" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 12
@@ -156,4 +157,3 @@ script = ExtResource("7_fv3qd")
 color = Color(0.539348, 1, 0.288419, 1)
 
 [connection signal="pressed" from="UI/Ribbon/TopRibbon/ScrollContainer/LayoutTabs/NewLayoutButton" to="UI/Ribbon/TopRibbon/ScrollContainer/LayoutTabs" method="_on_new_layout_button_pressed"]
-[connection signal="layout_changed" from="UI/LayoutUIManager/Panel" to="UI/LayoutUIManager" method="_on_layout_change"]
