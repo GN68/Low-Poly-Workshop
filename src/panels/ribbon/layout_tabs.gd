@@ -5,11 +5,16 @@ extends HBoxContainer
 @onready var LayroutUIManager = Registry.LayoutUIManager
 
 func _ready() -> void:
-	LayroutUIManager.layouts.collection_changed.connect(update_tabs)
-	update_tabs()
+	_layouts_changed()
+	LayroutUIManager.layouts_changed.connect(_layouts_changed)
+	rebuild_tabs()
+
+func _layouts_changed():
+	LayroutUIManager.layouts.collection_changed.connect(rebuild_tabs)
+	rebuild_tabs()
 
 
-func update_tabs() -> void:
+func rebuild_tabs() -> void:
 	for child in $LayoutButtons.get_children():
 		child.queue_free()
 	
