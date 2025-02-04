@@ -6,6 +6,8 @@ class_name LayoutUIManager
 @export var layouts: LayoutCollection = LayoutCollection.new() : set = set_layout_collection
 @export var current_layout: Layout : set = set_current_layout
 
+signal layouts_changed
+
 var should_save_layout = false
 
 const PATH_LAYOUTS = "user://layouts.tres"
@@ -16,13 +18,14 @@ func _init() -> void:
 	Registry.LayoutUIManager = self
 	if FileAccess.file_exists(PATH_LAYOUTS):
 		load_layout_collection()
+		if layouts.collection.size() == 0:
+			layouts = load("res://assets/default/layouts.tres")
 	else:
 		layouts = LayoutCollection.new()
 		save_layout_collection()
-	layouts.collection_changed.connect(save_layout_collection)
-
 
 func _ready() -> void:
+	load_layout_collection()
 	set_current_layout(layouts.collection[0])
 
 
@@ -33,13 +36,17 @@ func set_current_layout(new_layout: Layout) -> void:
 
 ## Sets the existing layouts
 func set_layout_collection(new_layouts : LayoutCollection) -> void:
+	layouts.collection_changed.disconnect(save_layout_collection)
 	layouts = new_layouts
+	layouts.collection_changed.connect(save_layout_collection)
 
 
 ## Saves the current state of the UI Layout to a layout resource.
 func save_layout() -> void:
 	_collect_layout(get_child(0), current_layout.tree)
-	print(current_layout.tree)
+	if layouts.collection.size() == 0: # if the collection is empty, load the default one	
+		layouts = load("res://assets/default/layouts.tres")
+		load_layout_collection()
 	save_layout_collection()
 
 
@@ -103,7 +110,10 @@ func _process(delta: float) -> void:
 ## Loads file state of the layout collection
 func load_layout_collection() -> void:
 	layouts = ResourceLoader.load(PATH_LAYOUTS, "LayoutCollection")
+	if layouts.collection.size() == 0:
+		layouts = load("res://assets/default/layouts.tres")
 	current_layout = layouts.collection[0]
+	layouts_changed.emit()
 
 
 ## Save the current state of the layout collection
