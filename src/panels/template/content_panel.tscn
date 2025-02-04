@@ -109,6 +109,7 @@ selected = 0
 fit_to_longest_item = false
 allow_reselect = true
 item_count = 2
+popup/item_1/id = 1
 script = ExtResource("3_v8kn5")
 
 [connection signal="gui_input" from="SplitButtonTopLeft" to="." method="_on_split_button_input"]

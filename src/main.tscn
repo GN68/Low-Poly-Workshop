@@ -11,17 +11,23 @@
 
 [sub_resource type="Resource" id="Resource_i8jnn"]
 script = ExtResource("6_qi2c7")
-name = "Default Layout"
+name = "Home"
 tree = {
-"A": {},
+"A": {
+"type": "Home"
+},
 "B": {
-"A": {},
-"B": {},
+"A": {
+"type": "Viewport"
+},
+"B": {
+"type": "Viewport"
+},
 "is_vertical": false,
-"split": 0.467905
+"split": 0.300675
 },
 "is_vertical": true,
-"split": 0.517361
+"split": 0.296007
 }
 
 [node name="Node" type="Node"]
