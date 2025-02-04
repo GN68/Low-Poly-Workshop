@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="LayoutCollection" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://classes/ui/layout.gd" id="1_q7u23"]
+[ext_resource type="Script" path="res://classes/ui/layout_collection.gd" id="2_m7jno"]
+
+[sub_resource type="Resource" id="Resource_i8jnn"]
+script = ExtResource("1_q7u23")
+name = "Home"
+tree = {
+"A": {
+"type": "Home"
+},
+"B": {
+"A": {
+"type": "Viewport"
+},
+"B": {
+"type": "Viewport"
+},
+"is_vertical": false,
+"split": 0.300675
+},
+"is_vertical": true,
+"split": 0.296007
+}
+
+[sub_resource type="Resource" id="Resource_cnkan"]
+script = ExtResource("1_q7u23")
+name = "New Layout"
+tree = {}
+
+[resource]
+script = ExtResource("2_m7jno")
+collection = Array[ExtResource("1_q7u23")]([SubResource("Resource_i8jnn"), SubResource("Resource_cnkan")])
