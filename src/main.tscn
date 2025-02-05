@@ -21,13 +21,13 @@ tree = {
 "type": "Viewport"
 },
 "B": {
-"type": "Viewport"
+"type": "Settings"
 },
 "is_vertical": false,
-"split": 0.300675
+"split": 0.489028
 },
 "is_vertical": true,
-"split": 0.296007
+"split": 0.309028
 }
 
 [node name="Node" type="Node"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://qe3w6urdpqap"]
+[gd_scene load_steps=6 format=3 uid="uid://qe3w6urdpqap"]
 
 [ext_resource type="Script" path="res://classes/registry/registry.gd" id="1_ikduh"]
 [ext_resource type="Script" path="res://panels/template/content_panel_identity.gd" id="2_1rbmd"]
 [ext_resource type="Resource" uid="uid://dlesrcgnhkdor" path="res://panels/viewport/viewport.tres" id="3_8qvnu"]
 [ext_resource type="Resource" uid="uid://bcbaq7sun12fj" path="res://panels/home/home.tres" id="4_ltu5h"]
+[ext_resource type="Resource" uid="uid://dhbdo3npb2o7m" path="res://panels/settings/settings.tres" id="5_e6m34"]
 
 [node name="registry" type="Node"]
 script = ExtResource("1_ikduh")
-panels = Array[ExtResource("2_1rbmd")]([ExtResource("3_8qvnu"), ExtResource("4_ltu5h")])
+panels = Array[ExtResource("2_1rbmd")]([ExtResource("3_8qvnu"), ExtResource("4_ltu5h"), ExtResource("5_e6m34")])
