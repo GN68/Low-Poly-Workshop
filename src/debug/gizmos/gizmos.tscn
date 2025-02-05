@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://laywmsweg8d5"]
+
+[ext_resource type="PackedScene" uid="uid://cvvcpqtpwho17" path="res://panels/viewport/orbit_camera/orbit_camera.tscn" id="1_624b7"]
+
+[node name="Node" type="Node"]
+
+[node name="OrbitCamera" parent="." instance=ExtResource("1_624b7")]
