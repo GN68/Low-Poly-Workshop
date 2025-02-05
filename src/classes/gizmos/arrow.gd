@@ -33,18 +33,16 @@ func _ready():
 
 
 func _update_mesh() -> void:
-	
-	
 	if !display: # generate mesh
 		display = Node3D.new()
 		mesh_stem = CylinderMesh.new()
 		mesh_head = CylinderMesh.new()
 		
-		instance_stem = MeshInstance3D.new()
+		if instance_stem is not MeshInstance3D: instance_stem = MeshInstance3D.new()
 		instance_stem.mesh = mesh_stem
 		instance_stem.name = "stem"
 		
-		instance_head = MeshInstance3D.new()
+		if instance_head is not MeshInstance3D: instance_head = MeshInstance3D.new()
 		instance_head.mesh = mesh_head
 		instance_head.name = "head"
 		
