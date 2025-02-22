@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dkuq720erousc"]
+
+[node name="KeybindOption" type="HBoxContainer"]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Keybind Button"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ctrl + C"

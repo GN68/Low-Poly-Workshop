@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://8dvk26olovqd"]
 
-[ext_resource type="Script" path="res://panels/ribbon/layout_tabs.gd" id="1_w5467"]
+[ext_resource type="Script" uid="uid://dx1sdd5mmtmrg" path="res://panels/ribbon/layout_tabs.gd" id="1_w5467"]
 [ext_resource type="Texture2D" uid="uid://ctxn8t4wuk647" path="res://assets/themes/default/icons/add.svg" id="1_y1wcf"]
 [ext_resource type="PackedScene" uid="uid://dmubv2hd50tyw" path="res://panels/ribbon/layout_button.tscn" id="3_4vbll"]
-[ext_resource type="Script" path="res://classes/singletons/layout_ui_manager.gd" id="4_a1k1k"]
+[ext_resource type="Script" uid="uid://dqsn6owcw7htj" path="res://classes/singletons/layout_ui_manager.gd" id="4_a1k1k"]
 [ext_resource type="Resource" path="user://layouts.tres" id="5_6f7kt"]
 [ext_resource type="Environment" uid="uid://crisgidsf6yws" path="res://assets/themes/default/environment.tres" id="5_owy2e"]
-[ext_resource type="Script" path="res://classes/ui/layout.gd" id="6_qi2c7"]
-[ext_resource type="Script" path="res://classes/gizmos/arrow.gd" id="7_fv3qd"]
+[ext_resource type="Script" uid="uid://b4njoypdy8iks" path="res://classes/ui/layout.gd" id="6_qi2c7"]
+[ext_resource type="Script" uid="uid://cfn6qjcvqklsk" path="res://classes/gizmos/arrow.gd" id="7_fv3qd"]
 
 [sub_resource type="Resource" id="Resource_i8jnn"]
 script = ExtResource("6_qi2c7")

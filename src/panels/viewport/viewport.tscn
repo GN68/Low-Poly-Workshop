@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cp53v0doio7jc"]
 
-[ext_resource type="Script" path="res://panels/viewport/orbit_camera/orbit_camera.gd" id="2_6h1yw"]
-[ext_resource type="Script" path="res://classes/meshes/mesh_grid.gd" id="2_ssdwa"]
-[ext_resource type="Script" path="res://classes/camera/feedback_camera_3d.gd" id="3_wknmg"]
+[ext_resource type="Script" uid="uid://hn57aiomr6gu" path="res://panels/viewport/orbit_camera/orbit_camera.gd" id="2_6h1yw"]
+[ext_resource type="Script" uid="uid://baylveu10a650" path="res://classes/meshes/mesh_grid.gd" id="2_ssdwa"]
+[ext_resource type="Script" uid="uid://ciw56aijpyd3f" path="res://classes/camera/feedback_camera_3d.gd" id="3_wknmg"]
 [ext_resource type="Environment" uid="uid://crisgidsf6yws" path="res://assets/themes/default/environment.tres" id="4_vwkt3"]
 
 [node name="Control" type="Control"]

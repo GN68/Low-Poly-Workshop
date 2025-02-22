@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dmubv2hd50tyw"]
 
-[ext_resource type="Script" path="res://panels/ribbon/layout_button.gd" id="1_d6k5t"]
+[ext_resource type="Script" uid="uid://ma4wqcrjddgt" path="res://panels/ribbon/layout_button.gd" id="1_d6k5t"]
 [ext_resource type="Texture2D" uid="uid://b6gmkxv4rr2ep" path="res://assets/aliases/icons/rename.tres" id="2_8ykds"]
 [ext_resource type="Texture2D" uid="uid://b45udexk6i2ps" path="res://assets/aliases/icons/tab_delete.tres" id="3_td0ko"]
 [ext_resource type="Texture2D" uid="uid://b7syh2bn1picy" path="res://assets/aliases/icons/tab_move_left.tres" id="4_biqof"]

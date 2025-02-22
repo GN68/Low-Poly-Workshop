@@ -8,7 +8,6 @@ enum OPTION_TYPE {
 	BOOLEAN,
 	STRING,
 	NUMBER,
-	RANGE,
 	LIST,
 	COLOR,
 	KEYBIND,
@@ -53,13 +52,8 @@ func register_string(category: String, name: String, default_value: String) -> v
 
 
 ## Registers a number option.
-func register_number(category: String, name: String, default_value: float, step: float = 0) -> void:
+func register_number(category: String, name: String, default_value: float, step: float = 0, min = -INF, max = INF) -> void:
 	_register_option(category ,name, OPTION_TYPE.NUMBER, default_value,{step = step})
-
-
-## Registers a range option.
-func register_range(category: String, name: String, default_value: float,from: float, to:float, step: float = 0) -> void:
-	_register_option(category ,name, OPTION_TYPE.RANGE, default_value, {from = min(from,to), to = max(from,to),step = step})
 
 
 ## Registers a list option.
@@ -89,9 +83,6 @@ func set_option(category: String,name: String, value: Variant) -> void:
 			if value is String: option.value = value
 			else: _error(name, "String")
 		OPTION_TYPE.NUMBER:
-			if value is float: option.value = value
-			else: _error(name, "float")
-		OPTION_TYPE.RANGE:
 			if value is float: option.value = value
 			else: _error(name, "float")
 		OPTION_TYPE.LIST:

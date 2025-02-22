@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bdnai1xmnu06p"]
 
-[ext_resource type="Script" path="res://panels/template/content_panel.gd" id="1_l46ha"]
-[ext_resource type="Script" path="res://panels/template/mode_option_button.gd" id="3_v8kn5"]
+[ext_resource type="Script" uid="uid://bo4b6u3y4axp0" path="res://panels/template/content_panel.gd" id="1_l46ha"]
+[ext_resource type="Script" uid="uid://cidv8qaw5mesn" path="res://panels/template/mode_option_button.gd" id="3_v8kn5"]
 
 [node name="Panel" type="Panel"]
 anchors_preset = 15

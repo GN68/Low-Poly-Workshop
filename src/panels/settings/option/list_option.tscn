@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://belb8xw1iy68g"]
+
+[node name="ListOption" type="HBoxContainer"]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Option Button"
+horizontal_alignment = 2
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 3
+popup/item_0/text = "Test 1"
+popup/item_1/text = "Test 2"
+popup/item_1/id = 1
+popup/item_2/text = "Test 3"
+popup/item_2/id = 2

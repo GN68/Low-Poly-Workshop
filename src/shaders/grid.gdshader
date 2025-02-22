@@ -15,4 +15,3 @@ void fragment() {
 	ALBEDO = COLOR.rgb;
 	ALPHA = clamp(COLOR.w,0,1);
 }
-
