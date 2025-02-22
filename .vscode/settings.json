@@ -1,0 +1,9 @@
+{
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.patterns": {
+	"*.gd": "*.uid",
+	"*.gdshader": "*.uid",
+	"explorer.fileNesting.expand": "false"
+},
+"explorer.fileNesting.expand": false,
+}
