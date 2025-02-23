@@ -35,6 +35,11 @@ func has_option(name: String) -> bool:
 	return _options.has(name)
 
 
+## Returns true if the given category exists
+func has_category(name: String) -> bool:
+	return _options.has(name)
+
+
 ## Returns the names of the categories
 func get_categories() -> Array:
 	return _options.keys()
