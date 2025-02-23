@@ -25,12 +25,24 @@ func _error(name: String, to: String):
 	push_error("Attempted to set an option \""+name+"\" to a non-"+to+" value.")
 
 
+## Returns the data of the given option
 func get_option(name: String) -> Dictionary:
 	return _options[name]
 
 
+## Returns true if the given option exists
 func has_option(name: String) -> bool:
 	return _options.has(name)
+
+
+## Returns the names of the categories
+func get_categories() -> Array:
+	return _options.keys()
+
+
+## Returns the names of the options in the given category
+func get_options(category: String) -> Array:
+	return _options[category].keys()
 
 ## ============================ Option Registry ============================ ##
 
