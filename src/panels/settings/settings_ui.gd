@@ -40,6 +40,7 @@ func set_current_category(category: String) -> void:
 func reload_category_list():
 	for child in CategoriesButtons.get_children(): child.queue_free()
 	for category in Settings.get_categories():
-		var category_instance = CategoryButton.instantiate()
-		category_instance.text = category
-		CategoriesButtons.add_child(category_instance)
+		var category_button: Button = CategoryButton.instantiate()
+		category_button.text = category
+		category_button.pressed.connect(set_current_category.bind(category))
+		CategoriesButtons.add_child(category_button)
