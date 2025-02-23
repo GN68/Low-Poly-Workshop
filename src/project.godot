@@ -21,7 +21,7 @@ config/icon="res://icon.svg"
 Utils="*res://classes/utils.gd"
 Registry="*res://classes/registry/registry.tscn"
 LPWEditor="*res://classes/editor.gd"
-Options="*res://classes/singletons/options.gd"
+Settings="*res://classes/singletons/settings.gd"
 
 [debug]
 

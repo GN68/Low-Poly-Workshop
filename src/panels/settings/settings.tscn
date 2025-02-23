@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b41124rkd7byy"]
+[gd_scene load_steps=8 format=3 uid="uid://b41124rkd7byy"]
 
 [ext_resource type="PackedScene" uid="uid://67a2151p0ytj" path="res://panels/settings/option/bool_option.tscn" id="1_aei8a"]
 [ext_resource type="PackedScene" uid="uid://2svd0ptnc0r" path="res://panels/settings/option/color_option.tscn" id="1_ci7er"]
+[ext_resource type="Script" uid="uid://6o1yse044m03" path="res://panels/settings/settings_ui.gd" id="1_ev5us"]
 [ext_resource type="PackedScene" uid="uid://bj0sxvvhcjuvb" path="res://panels/settings/option/string_option.tscn" id="3_2qw1l"]
 [ext_resource type="PackedScene" uid="uid://b728c6upk1nvn" path="res://panels/settings/option/number_option.tscn" id="4_xtplc"]
 [ext_resource type="PackedScene" uid="uid://belb8xw1iy68g" path="res://panels/settings/option/list_option.tscn" id="5_neltr"]
@@ -14,6 +15,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ev5us")
+options = Dictionary[int, PackedScene]({
+0: ExtResource("1_aei8a"),
+1: ExtResource("3_2qw1l"),
+2: ExtResource("4_xtplc"),
+3: ExtResource("5_neltr"),
+4: ExtResource("1_ci7er"),
+5: ExtResource("6_ytoe7")
+})
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -23,14 +33,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="CategoriesPanel" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer"]
+[node name="Search" type="LineEdit" parent="HBoxContainer/CategoriesPanel"]
 layout_mode = 2
 placeholder_text = "Search..."
 
-[node name="ScrollContainer2" type="ScrollContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/CategoriesPanel"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -39,51 +49,51 @@ size_flags_stretch_ratio = 0.25
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/ScrollContainer2"]
+[node name="CategoriesButtons" type="VBoxContainer" parent="HBoxContainer/CategoriesPanel/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/ScrollContainer2/VBoxContainer"]
+[node name="Button" type="Button" parent="HBoxContainer/CategoriesPanel/ScrollContainer/CategoriesButtons"]
 layout_mode = 2
 text = "Generic"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+[node name="OptionsPanel" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+[node name="CategoryLabel" type="Label" parent="HBoxContainer/OptionsPanel"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Generic"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer2"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/OptionsPanel"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/ScrollContainer"]
+[node name="OptionsButtons" type="VBoxContainer" parent="HBoxContainer/OptionsPanel/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ColorOption" parent="HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_ci7er")]
+[node name="ColorOption" parent="HBoxContainer/OptionsPanel/ScrollContainer/OptionsButtons" instance=ExtResource("1_ci7er")]
 layout_mode = 2
 
-[node name="BoolOption" parent="HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_aei8a")]
+[node name="BoolOption" parent="HBoxContainer/OptionsPanel/ScrollContainer/OptionsButtons" instance=ExtResource("1_aei8a")]
 layout_mode = 2
 
-[node name="StringOption" parent="HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_2qw1l")]
+[node name="StringOption" parent="HBoxContainer/OptionsPanel/ScrollContainer/OptionsButtons" instance=ExtResource("3_2qw1l")]
 layout_mode = 2
 
-[node name="NumberOption" parent="HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_xtplc")]
+[node name="NumberOption" parent="HBoxContainer/OptionsPanel/ScrollContainer/OptionsButtons" instance=ExtResource("4_xtplc")]
 layout_mode = 2
 
-[node name="ListOption" parent="HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("5_neltr")]
+[node name="ListOption" parent="HBoxContainer/OptionsPanel/ScrollContainer/OptionsButtons" instance=ExtResource("5_neltr")]
 layout_mode = 2
 
-[node name="KeybindOption" parent="HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("6_ytoe7")]
+[node name="KeybindOption" parent="HBoxContainer/OptionsPanel/ScrollContainer/OptionsButtons" instance=ExtResource("6_ytoe7")]
 layout_mode = 2
