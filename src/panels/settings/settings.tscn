@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b41124rkd7byy"]
+[gd_scene load_steps=9 format=3 uid="uid://b41124rkd7byy"]
 
 [ext_resource type="PackedScene" uid="uid://67a2151p0ytj" path="res://panels/settings/option/bool_option.tscn" id="1_aei8a"]
 [ext_resource type="PackedScene" uid="uid://2svd0ptnc0r" path="res://panels/settings/option/color_option.tscn" id="1_ci7er"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b728c6upk1nvn" path="res://panels/settings/option/number_option.tscn" id="4_xtplc"]
 [ext_resource type="PackedScene" uid="uid://belb8xw1iy68g" path="res://panels/settings/option/list_option.tscn" id="5_neltr"]
 [ext_resource type="PackedScene" uid="uid://dkuq720erousc" path="res://panels/settings/option/keybind_option.tscn" id="6_ytoe7"]
+[ext_resource type="PackedScene" uid="uid://csh3xfqxwo86x" path="res://panels/settings/category_button.tscn" id="8_svu2l"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -54,9 +55,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="HBoxContainer/CategoriesPanel/ScrollContainer/CategoriesButtons"]
+[node name="Button" parent="HBoxContainer/CategoriesPanel/ScrollContainer/CategoriesButtons" instance=ExtResource("8_svu2l")]
 layout_mode = 2
-text = "Generic"
+text = "..."
 
 [node name="OptionsPanel" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2

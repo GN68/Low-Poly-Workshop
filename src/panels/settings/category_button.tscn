@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://csh3xfqxwo86x"]
+
+[node name="Button" type="Button"]
+text = "Generic"
