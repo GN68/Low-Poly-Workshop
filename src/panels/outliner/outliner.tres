@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ContentPanelIdentity" load_steps=4 format=3 uid="uid://b1rku82wfmclj"]
+
+[ext_resource type="PackedScene" uid="uid://c84g83sr4nchd" path="res://panels/outliner/outliner.tscn" id="1_wc4se"]
+[ext_resource type="Texture2D" uid="uid://l75f5jt3o1h3" path="res://assets/aliases/icons/panel_outliner.tres" id="2_wc4se"]
+[ext_resource type="Script" uid="uid://bhfgppwh0iecu" path="res://panels/template/content_panel_identity.gd" id="3_58yfw"]
+
+[resource]
+script = ExtResource("3_58yfw")
+content_panel = ExtResource("1_wc4se")
+name = "Outliner"
+icon = ExtResource("2_wc4se")
