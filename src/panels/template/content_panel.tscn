@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cidv8qaw5mesn" path="res://panels/template/mode_option_button.gd" id="3_v8kn5"]
 
 [node name="Panel" type="Panel"]
+clip_contents = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

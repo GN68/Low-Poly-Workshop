@@ -16,6 +16,7 @@ size = Vector2i(131, 120)
 item_count = 4
 item_0/text = "Rename"
 item_0/icon = ExtResource("2_8ykds")
+item_0/id = 0
 item_1/text = "Delete"
 item_1/icon = ExtResource("3_td0ko")
 item_1/id = 1
