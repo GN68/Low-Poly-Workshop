@@ -13,7 +13,7 @@ config_version=5
 config/name="Low Poly Workshop"
 config/version="0.0.1"
 run/main_scene="res://main.tscn"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -50,8 +50,8 @@ folder_colors={
 
 [gui]
 
-theme/custom="res://assets/themes/default/theme.tres"
 theme/default_font_antialiasing=2
+theme/custom="res://assets/themes/default/theme.tres"
 
 [rendering]
 
