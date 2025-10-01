@@ -23,4 +23,5 @@ func _input(event: InputEvent) -> void:
 
 func set_zoom(new: float):
 	zoom = clampf(new, 0.1, 10000)
-	get_tree().create_tween().set_trans(Tween.TRANS_LINEAR).tween_property(self, "final_zoom", zoom, 0.1)
+	if get_tree():
+		get_tree().create_tween().set_trans(Tween.TRANS_LINEAR).tween_property(self, "final_zoom", zoom, 0.1)

@@ -47,9 +47,9 @@ func set_current_panel(new: ContentPanelIdentity):
 		for child in $Content.get_children():
 			child.queue_free()
 		$Content.add_child(new.content_panel.instantiate())
-	current_panel_changed.emit(new)
-	layout_changed.emit()
-	$ModeOptionButton.set_from_name(new.name)
+		current_panel_changed.emit(new)
+		layout_changed.emit()
+		$ModeOptionButton.set_from_name(new.name)
 
 
 func split(split_at: float, is_split_vertical: bool):
