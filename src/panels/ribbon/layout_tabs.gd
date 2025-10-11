@@ -10,7 +10,8 @@ func _ready() -> void:
 	rebuild_tabs()
 
 func _layouts_changed():
-	LayroutUIManager.layouts.collection_changed.connect(rebuild_tabs)
+	if not LayroutUIManager.layouts.collection_changed.is_connected(rebuild_tabs):
+		LayroutUIManager.layouts.collection_changed.connect(rebuild_tabs)
 	rebuild_tabs()
 
 
