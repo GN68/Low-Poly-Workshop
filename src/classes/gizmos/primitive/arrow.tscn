@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dky4khqdsc6vi"]
+
+[ext_resource type="Script" uid="uid://cfn6qjcvqklsk" path="res://classes/gizmos/arrow.gd" id="1_lnb6j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lnb6j"]
+shading_mode = 0
+albedo_color = Color(0.5411765, 1, 0.2901961, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_j5rs2"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.84
+cap_top = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_lnb6j"]
+top_radius = 0.0
+bottom_radius = 0.04
+height = 0.16
+cap_top = false
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_lnb6j"]
+
+[node name="ArrowGizmo" type="Node3D"]
+script = ExtResource("1_lnb6j")
+color = Color(0.5411765, 1, 0.2901961, 1)
+
+[node name="MeshStem" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, 0)
+material_override = SubResource("StandardMaterial3D_lnb6j")
+mesh = SubResource("CylinderMesh_j5rs2")
+
+[node name="MeshHead" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 0)
+material_override = SubResource("StandardMaterial3D_lnb6j")
+mesh = SubResource("CylinderMesh_lnb6j")
+
+[node name="DragArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DragArea"]
+shape = SubResource("WorldBoundaryShape3D_lnb6j")
+debug_color = Color(0.5411765, 1, 0.2901961, 1)
