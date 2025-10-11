@@ -1,4 +1,3 @@
-@tool
 extends Control
 class_name LayoutUIManager
 ## The class that manages the layouts being shown in the UI
@@ -36,7 +35,8 @@ func set_current_layout(new_layout: Layout) -> void:
 
 ## Sets the existing layouts
 func set_layout_collection(new_layouts : LayoutCollection) -> void:
-	layouts.collection_changed.disconnect(save_layout_collection)
+	if layouts.collection_changed.is_connected(save_layout_collection):
+		layouts.collection_changed.disconnect(save_layout_collection)
 	layouts = new_layouts
 	layouts.collection_changed.connect(save_layout_collection)
 
