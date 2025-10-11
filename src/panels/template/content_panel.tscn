@@ -95,14 +95,10 @@ theme_type_variation = &"PreviewPanel"
 
 [node name="ModeOptionButton" type="OptionButton" parent="."]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = -28.0
-offset_right = 40.0
-offset_bottom = -3.0
-grow_vertical = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 44.0
+offset_bottom = 24.0
 theme_override_colors/font_color = Color(0, 0, 0, 0)
 clip_text = true
 expand_icon = true
