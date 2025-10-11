@@ -49,7 +49,7 @@ func get_categories() -> Array:
 func get_options(category: String) -> Array:
 	return _options[category].keys()
 
-## ============================ Option Registry ============================ ##
+#[────────────────────────────────────────-< Option Registry >-────────────────────────────────────────]#
 
 func _register_option(category: String, name: String, type: OPTION_TYPE, default_value: Variant, data: Variant = null) -> void:
 	if !_options.has(category): _options[category] = {}
@@ -77,15 +77,16 @@ func register_number(category: String, name: String, default_value: float, step:
 func register_list(category: String, name: String, default_value: int, list: Array[String]) -> void:
 	_register_option(category ,name, OPTION_TYPE.LIST, default_value, list)
 
+
 ## Registers a keybind option. the default value is an array of [Key]s
 func register_keybind(category: String, name: String, default_value: Array[Key]) -> void:
 	_register_option(category ,name, OPTION_TYPE.KEYBIND, default_value)
+
 
 ## Registers a color option.
 func register_color(category: String, name: String, default_value: Color) -> void:
 	_register_option(category ,name, OPTION_TYPE.COLOR, default_value)
 
-## ============================ Option Setters ============================ ##
 
 
 ## Sets the value of an option.
