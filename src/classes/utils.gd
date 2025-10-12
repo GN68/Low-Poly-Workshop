@@ -7,7 +7,7 @@ extends Node
 ## `-1` if `a < b`,[br]
 ## ` 0` if `a == b`,[br]
 ## ` 1` if `a > b`[br]
-func compareVersions(a: String, b: String):
+func compare_versions(a: String, b: String):
 	var versionA = a.split(".")
 	var versionB = b.split(".")
 	for i in range(min(versionA.size(), versionB.size())):
