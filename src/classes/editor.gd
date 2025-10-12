@@ -4,6 +4,8 @@ extends Node
 var workspaces : Array[Workspace] = []
 var current_workspace : Workspace: set = set_workspace
 
+signal drag_started(data: Variant)
+signal drag_ended(data: Variant)
 
 func _ready() -> void:
 	set_workspace(Workspace.new())
@@ -20,4 +22,4 @@ func create_mesh():
 	assert(current_workspace is Workspace, "Current Workspace does not exist or is not a Workspace")
 	
 	var object = LPWMesh.new()
-	current_workspace.add_object(object)
+	current_workspace.add_child(object)

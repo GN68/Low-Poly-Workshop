@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://d3ver48km7eb6"]
+
+[node name="lorem" type="Node"]
+
+[node name="ipsum" type="Node" parent="."]
+
+[node name="dolor" type="Node" parent="."]
+
+[node name="sit" type="Node" parent="dolor"]
+
+[node name="amet2" type="Node" parent="dolor/sit"]
+
+[node name="amet3" type="Node" parent="dolor/sit/amet2"]
+
+[node name="amet" type="Node" parent="dolor"]

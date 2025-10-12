@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://8dvk26olovqd"]
+[gd_scene load_steps=11 format=3 uid="uid://8dvk26olovqd"]
 
 [ext_resource type="Script" uid="uid://c6x0neo2hhbgs" path="res://classes/editor.gd" id="1_kek77"]
 [ext_resource type="Script" uid="uid://dx1sdd5mmtmrg" path="res://panels/ribbon/layout_tabs.gd" id="1_w5467"]
@@ -22,6 +22,8 @@ tree = {
 "is_vertical": true,
 "split": 0.29577856729437413
 }
+
+[sub_resource type="BoxMesh" id="BoxMesh_4c57u"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_kek77")
@@ -154,5 +156,8 @@ environment = ExtResource("5_owy2e")
 transform = Transform3D(0.293523, -0.828121, 0.477557, -1.49012e-08, 0.499562, 0.866278, -0.955952, -0.254273, 0.146633, 0, 2, 0)
 
 [node name="Workspace" type="Node" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_4c57u")
 
 [connection signal="pressed" from="UI/Ribbon/TopRibbon/ScrollContainer/LayoutTabs/NewLayoutButton" to="UI/Ribbon/TopRibbon/ScrollContainer/LayoutTabs" method="_on_new_layout_button_pressed"]
