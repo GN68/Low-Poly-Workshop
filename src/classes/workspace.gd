@@ -26,3 +26,8 @@ func move_object(object: LPWObject, new_parent: LPWObject):
 		object.get_parent().remove_child(object)
 	new_parent.add_child(object)
 	object_moved.emit(object, new_parent)
+
+#[────────────────────────-< Data Processing >-────────────────────────]#
+
+func export_data() -> Dictionary:
+	return {}
