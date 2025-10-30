@@ -1,6 +1,8 @@
-[gd_resource type="Theme" load_steps=27 format=3 uid="uid://bl6amu023s1di"]
+[gd_resource type="Theme" load_steps=29 format=3 uid="uid://bl6amu023s1di"]
 
 [ext_resource type="Texture2D" uid="uid://ctxn8t4wuk647" path="res://assets/themes/default/icons/add.svg" id="1_v2lld"]
+[ext_resource type="Texture2D" uid="uid://b4i2qq5757req" path="res://assets/themes/default/icons/folder.svg" id="2_qsv6p"]
+[ext_resource type="Texture2D" uid="uid://cnwleaswmyw3g" path="res://assets/themes/default/icons/cube.svg" id="3_u7jq6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_53l4f"]
 draw_center = false
@@ -281,6 +283,8 @@ IconButton/styles/hover = SubResource("StyleBoxFlat_xbrdi")
 IconButton/styles/normal = SubResource("StyleBoxEmpty_iqn8x")
 IconButton/styles/pressed = SubResource("StyleBoxEmpty_7cu7w")
 Icons/icons/add = SubResource("AtlasTexture_r07o8")
+Icons/icons/group = ExtResource("2_qsv6p")
+Icons/icons/mesh = ExtResource("3_u7jq6")
 LayoutButtonTab/base_type = &"Button"
 LayoutButtonTab/colors/font_pressed_color = Color(0.574219, 0.574219, 0.574219, 1)
 LayoutButtonTab/styles/focus = SubResource("StyleBoxEmpty_rpy13")
@@ -295,6 +299,11 @@ Panel/styles/panel = SubResource("StyleBoxFlat_jc5m5")
 PreviewPanel/base_type = &"Panel"
 PreviewPanel/styles/panel = SubResource("StyleBoxFlat_gb3yy")
 ProjectButtonTab/base_type = &"Button"
+Tree/constants/draw_guides = 1
+Tree/constants/draw_relationship_lines = 0
+Tree/constants/h_separation = 6
+Tree/constants/icon_max_width = 18
+Tree/constants/parent_hl_line_width = 2
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_6qase")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_j6mlo")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_2b3ha")
