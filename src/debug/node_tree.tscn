@@ -1,15 +1,40 @@
-[gd_scene format=3 uid="uid://d3ver48km7eb6"]
+[gd_scene load_steps=3 format=3 uid="uid://d3ver48km7eb6"]
 
-[node name="lorem" type="Node"]
+[ext_resource type="Script" uid="uid://cxemac5devvtu" path="res://classes/objects/lpw_group.gd" id="1_jgw63"]
+[ext_resource type="Script" uid="uid://co5x0pdn1rlk1" path="res://classes/objects/lpw_mesh.gd" id="2_1ulna"]
 
-[node name="ipsum" type="Node" parent="."]
+[node name="Group" type="Node3D"]
+script = ExtResource("1_jgw63")
+metadata/_custom_type_script = "uid://cxemac5devvtu"
 
-[node name="dolor" type="Node" parent="."]
+[node name="Mesh" type="Node3D" parent="."]
+script = ExtResource("2_1ulna")
+metadata/_custom_type_script = "uid://co5x0pdn1rlk1"
 
-[node name="sit" type="Node" parent="dolor"]
+[node name="Group" type="Node3D" parent="."]
+script = ExtResource("1_jgw63")
+metadata/_custom_type_script = "uid://cxemac5devvtu"
 
-[node name="amet2" type="Node" parent="dolor/sit"]
+[node name="Mesh" type="Node3D" parent="Group"]
+script = ExtResource("2_1ulna")
+metadata/_custom_type_script = "uid://co5x0pdn1rlk1"
 
-[node name="amet3" type="Node" parent="dolor/sit/amet2"]
+[node name="Group2e" type="Node3D" parent="."]
+script = ExtResource("1_jgw63")
+metadata/_custom_type_script = "uid://cxemac5devvtu"
 
-[node name="amet" type="Node" parent="dolor"]
+[node name="Mesh" type="Node3D" parent="Group2e"]
+script = ExtResource("2_1ulna")
+metadata/_custom_type_script = "uid://co5x0pdn1rlk1"
+
+[node name="Group3" type="Node3D" parent="."]
+script = ExtResource("1_jgw63")
+metadata/_custom_type_script = "uid://cxemac5devvtu"
+
+[node name="Group" type="Node3D" parent="Group3"]
+script = ExtResource("1_jgw63")
+metadata/_custom_type_script = "uid://cxemac5devvtu"
+
+[node name="Mesh" type="Node3D" parent="Group3/Group"]
+script = ExtResource("2_1ulna")
+metadata/_custom_type_script = "uid://co5x0pdn1rlk1"
